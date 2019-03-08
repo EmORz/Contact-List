@@ -22,7 +22,7 @@ namespace Data
         {
             var allRecords = new List<string>();
 
-            if (comboBox1.Enabled && button1.Enabled /*"ръководство"*/)
+            if (comboBox1.Text.Contains("Ръководство") /*"ръководство"*/)
             {
                 var chief = Chief(textBox2.Text);
                 //allRecords.AddRange(chief);
@@ -30,119 +30,119 @@ namespace Data
 
             }
 
-            if (comboBox1.Enabled/*"звено за вътрешен одит"*/)
+            else if (comboBox1.Text.Contains("Звено за вътрешен одит")/*"звено за вътрешен одит"*/)
             {
                 var odit = Odit(textBox2.Text);
                // allRecords.AddRange(odit);
 
                 Print(odit);
             }
-            else if (textBox2.Text.ToLower() == "главен архитект")
+            else if (comboBox1.Text.Contains("Главен архитект"))
             {
                 var odit = Architect(textBox2.Text);
                 allRecords.AddRange(odit);
 
                 Print(odit);
             }
-            else if (textBox2.Text.ToLower() == "пно")
+            else if (comboBox1.Text.Contains("Дирекция \"Правно нормативно обслужване\""))
             {
                 var odit = PNO(textBox2.Text);
                 allRecords.AddRange(odit);
 
                 Print(odit);
             }
-            else if (textBox2.Text.ToLower() == "култура")
+            else if (comboBox1.Text.Contains("Дирекция \"Култура спорт и туризъм\""))
             {
                 var odit = Cultur(textBox2.Text);
                 allRecords.AddRange(odit);
 
-                Print(odit);
+                Print(odit); 
             }
-            else if (textBox2.Text.ToLower() == "пиар")
+            else if (comboBox1.Text.Contains("Връзки с обществеността, протокол и международни дейности"))
             {
                 var odit = PIAR(textBox2.Text);
                 allRecords.AddRange(odit);
 
                 Print(odit);
             }
-            else if (textBox2.Text.ToLower() == "фдмдт")
+            else if (comboBox1.Text.Contains("Дирекция \"Финансови дейности и МДТ\""))
             {
                 var odit = FDMDT(textBox2.Text);
                 allRecords.AddRange(odit);
 
                 Print(odit);
             }
-            else if (textBox2.Text.ToLower() == "пос")
+            else if (comboBox1.Text.Contains("Дирекция \"Програми и околна среда\""))
             {
                 var odit = ProgramAndEkologiq(textBox2.Text);
                 allRecords.AddRange(odit);
 
                 Print(odit);
             }
-            else if (textBox2.Text.ToLower() == "оид")
+            else if (comboBox1.Text.Contains("Отдел \"Инвестиционни дейности\""))
             {
                 var odit = Investicion(textBox2.Text);
                 allRecords.AddRange(odit);
 
                 Print(odit);
             }
-            else if (textBox2.Text.ToLower() == "тсу")
+            else if (comboBox1.Text.Contains("Дирекция \"ТСУ, общинска собственост и контрол в строителството\""))
             {
                 var odit = TSU(textBox2.Text);
                 allRecords.AddRange(odit);
 
                 Print(odit);
             }
-            else if (textBox2.Text.ToLower() == "дхд")
+            else if (comboBox1.Text.Contains("Дирекция \"Хуманитарни дейности\""))
             {
                 var odit = HumanActivity(textBox2.Text);
                 allRecords.AddRange(odit);
 
                 Print(odit);
             }
-            else if (textBox2.Text.ToLower() == "осд")
+            else if (comboBox1.Text.Contains("Отдел \"Социални дейности\""))
             {
                 var odit = SocialActivity(textBox2.Text);
                 allRecords.AddRange(odit);
 
                 Print(odit);
             }
-            else if (textBox2.Text.ToLower() == "оснв")
+            else if (comboBox1.Text.Contains("Общински съвет по наркотични вещества"))
             {
                 var odit = Narko(textBox2.Text);
                 allRecords.AddRange(odit);
 
                 Print(odit);
             }
-            else if (textBox2.Text.ToLower() == "грао")
+            else if (comboBox1.Text.Contains("Отдел \"Гражданска регистрация и административно обслужване на населението\""))
             {
                 var odit = GRAON(textBox2.Text);
                 allRecords.AddRange(odit);
 
                 Print(odit);
             }
-            else if (textBox2.Text.ToLower() == "зоос")
+            else if (comboBox1.Text.Contains("Звено „Обслужване на Общински съвет”"))
             {
                 var odit = ZOOS(textBox2.Text);
                 allRecords.AddRange(odit);
 
                 Print(odit);
             }
-            else if (textBox2.Text.ToLower() == "ио")
+            else if (comboBox1.Text.Contains("Информационно обслужване"))
+            {
+                var odit = ITService(textBox2.Text);
+                allRecords.AddRange(odit);
+
+                Print(odit);
+            }
+            else if (comboBox1.Text.Contains("АСД, деловодство и архив"))
             {
                 var odit = ASD(textBox2.Text);
                 allRecords.AddRange(odit);
 
                 Print(odit);
             }
-            else if (textBox2.Text.ToLower() == "асд")
-            {
-                var odit = Odit(textBox2.Text);
-                allRecords.AddRange(odit);
-
-                Print(odit);
-            }
-            else if (textBox2.Text.ToLower() == "кметства")
+            else if (comboBox1.Text.Contains("Кметства"))
             {
                 var odit = LocalMunicipality(textBox2.Text);
                 allRecords.AddRange(odit);
@@ -150,7 +150,7 @@ namespace Data
                 Print(odit);
             }
 
-            else if (textBox2.Text.ToLower() == "дд")
+            else if (comboBox1.Text.Contains("Други дейности към общинска администрация"))
             {
                 var odit = Oth(textBox2.Text);
                 allRecords.AddRange(odit);
@@ -838,6 +838,11 @@ namespace Data
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
         }
