@@ -29,6 +29,15 @@ namespace Data
             
         }
 
+        public List<string> Chief(string input)
+        {
+            var infoData = new List<string>
+            {
+                //ToDo - add functionality select by department and other structure
+            };
+
+            return null;
+        }
         public List<string> BossData(string input)
         {
             var result =  new List<string>();
@@ -41,9 +50,11 @@ namespace Data
                 "зам. кмет	Ердинч Ахмедов Хасанов /Deputy-mayor – Erdinch Ahmedov Hasanov/	508	e.hasanov@razgrad.bg	618/350",
                 "старши специалист-сътрудник зам.-кмет	Маринка Дачева Николова	508		618/135",
                 "секретар	Нели Стоянова Добрева /Secretary – Neli Stoyanova Dobreva/	507	sdd@razgrad.bg	618/146",
+
                 "Главен вътрешен одитор	Даринка Неделчева Илиева	906	darina.ilieva@razgrad.bg	618/182",
                 "Главен архитект	 арх. Илин Любомиров Солаков	210	solakov@razgrad.bg	618/149",
                 "Директор дирекция	Хубан Евгениев Соколов	301	h.sokolov@razgrad.bg	618/175",
+
                 "Главен юрисконсулт	Сабри Велиев Дурльов	310		618/138",
                 "Главен юрисконсулт - обществени поръчки	Билял Ибрахимов Црънгалов	303	b.trangalov@razgrad.bg	618/121",
                 "Главен юрисконсулт - обществени поръчки	Виргиния Николаева Станкова	303	v.stankova@razgrad.bg	618/173",
@@ -264,39 +275,25 @@ namespace Data
                 "Пропуск		4		618/151",
                 "Кафе „Панорама” Сграда на Общинска администрация, 11 ет.				618/287",
                 //
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             };
+            var counter = 0;
+
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i].Contains(input))
+                if (data[i].ToLower().Contains(input))
                 {
-                    result.Add(data[i]);
+
+                    var removeEmpty = data[i].Split(new char[]{' ', '\t'});
+                    var temp = "";
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var s in removeEmpty)
+                    {
+                        sb.Append(s+" ");
+                    }
+                    counter++;
+                    result.Add(counter+" "+sb.ToString().Trim());
                 }
+
             }
             
             return result;

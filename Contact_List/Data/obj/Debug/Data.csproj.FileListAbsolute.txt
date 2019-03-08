@@ -8,3 +8,13 @@ C:\Users\User\source\repos\Contact_List\Data\obj\Debug\Data.csproj.GenerateResou
 C:\Users\User\source\repos\Contact_List\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
 C:\Users\User\source\repos\Contact_List\Data\obj\Debug\Data.exe
 C:\Users\User\source\repos\Contact_List\Data\obj\Debug\Data.pdb
+C:\Users\User\source\repos\Contact-List\Contact_List\Data\bin\Debug\Data.exe.config
+C:\Users\User\source\repos\Contact-List\Contact_List\Data\bin\Debug\Data.exe
+C:\Users\User\source\repos\Contact-List\Contact_List\Data\bin\Debug\Data.pdb
+C:\Users\User\source\repos\Contact-List\Contact_List\Data\obj\Debug\Data.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Contact-List\Contact_List\Data\obj\Debug\Data.Form1.resources
+C:\Users\User\source\repos\Contact-List\Contact_List\Data\obj\Debug\Data.Properties.Resources.resources
+C:\Users\User\source\repos\Contact-List\Contact_List\Data\obj\Debug\Data.csproj.GenerateResource.cache
+C:\Users\User\source\repos\Contact-List\Contact_List\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Contact-List\Contact_List\Data\obj\Debug\Data.exe
+C:\Users\User\source\repos\Contact-List\Contact_List\Data\obj\Debug\Data.pdb
