@@ -522,7 +522,7 @@ namespace Data
         {
             for (int i = 0; i < temp.Count; i++)
             {
-                this.richTextBox1.Text += i+" "+temp[i]+"\n";
+                this.richTextBox1.Text += i+" => "+temp[i]+$"\n{new string('*', 130)}\n";
             }
         }
 
@@ -799,8 +799,10 @@ namespace Data
                     {
                         sb.Append(s+" ");
                     }
+
+                    sb.AppendLine($"\n{new string('*', 130)}"+"\n");
                     counter++;
-                    result.Add(counter+" "+sb.ToString().Trim());
+                    result.Add(counter+" => "+sb.ToString().Trim());
                 }
 
             }
