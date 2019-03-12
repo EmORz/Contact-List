@@ -44,7 +44,7 @@ namespace Data
 
             allRecord.AddRange(chief);
             allRecord.AddRange(arhitect);
-            allRecord.AddRange(zveno);
+            //allRecord.AddRange(zveno);
             allRecord.AddRange(lawers);
             allRecord.AddRange(cultutre);
             allRecord.AddRange(piar);
@@ -83,7 +83,7 @@ namespace Data
 
                 // allRecords.AddRange(odit);
 
-                Print(odit);
+                PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Главен архитект"))
             {
@@ -221,15 +221,41 @@ namespace Data
             
         }
 
-        private List<string> Odit()
+        private List<Employee> Odit()
         {
+            Employee emp = new Employee();
+            emp.Department = "Звено за вътрешен одит";
+            emp.professionalLeve = "Главен вътрешен одитор";
+            emp.FirstName = "Даринка";
+            emp.MiddleName = "Неделчева";
+            emp.LastName = "Илиева";
+            emp.roomNumber = "906";
+            emp.email = "darina.ilieva@razgrad.bg";
+            emp.phoneNumber = "618/182";
+
+            Employee emp01 = new Employee();
+            emp01.Department = "Звено за вътрешен одит";
+            emp01.professionalLeve = "Главен вътрешен одитор";
+            emp01.FirstName = "Bai Ivan Test";
+            emp01.MiddleName = "Ivanov";
+            emp01.LastName = "Ivanovi4";
+            emp01.roomNumber = "906";
+            emp01.email = "baiivan.ivanov@razgrad.bg";
+            emp01.phoneNumber = "618/182";
+
+            List<Employee> empCollection = new List<Employee>();
+            empCollection.Add(emp);
+            empCollection.Add(emp01);
+       
+            
             var infoData = new List<string>
             {
+
                 "Главен вътрешен одитор	Даринка Неделчева Илиева	906	darina.ilieva@razgrad.bg	618/182",
             };
 
             //allRecords.AddRange(infoData);
-            return infoData;
+            return empCollection;
         }
         private List<string> Architect()
         {
@@ -602,11 +628,24 @@ namespace Data
             return infoData;
         }
 
+        public void PrintT(List<Employee> collection)
+        {
+     
+
+            this.richTextBox1.Text += "ОТДЕЛ/ДИРЕКЦИЯ" + " => "  +"ПРОФЕСИОНАЛНО НИВО"+" || "+ " ИМЕНА НА СЛУЖИТЕЛЯ "  + " || "+"СТАЯ/КАБИНЕТ"+" ИМЕЙЛ "+"ТЕЛЕФОНЕН НОМЕР"+ $"\n{new string('*', 130)}\n";
+
+            foreach (var employee in collection)
+            {
+                this.richTextBox1.Text += employee.Department + " => " +employee.professionalLeve+" || "+ employee.FirstName + " "+employee.MiddleName+" " + employee.LastName+" || "
+                                          +employee.roomNumber+" || "+employee.email+" || "+employee.phoneNumber + $"\n{new string('*', 130)}\n";
+            }
+        }
+
         public void Print(List<string> temp)
         {
             for (int i = 0; i < temp.Count; i++)
             {
-                this.richTextBox1.Text += i+" => "+temp[i]+$"\n{new string('*', 130)}\n";
+                this.richTextBox1.Text += i + " => " + temp[i] + $"\n{new string('*', 130)}\n";
             }
             allRecord.Clear();
         }
