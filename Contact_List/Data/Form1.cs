@@ -56,9 +56,9 @@ namespace Data
             allRecord.AddRange(dhd);
             allRecord.AddRange(social);
             allRecord.AddRange(narko);
-            allRecord.AddRange(zoos);
+            allRec.AddRange(zoos);
             allRecord.AddRange(graon);
-            allRecord.AddRange(it);
+            allRec.AddRange(it);
             allRecord.AddRange(asd);
             allRecord.AddRange(kmetstva);
             allRecord.AddRange(others);
@@ -177,14 +177,14 @@ namespace Data
                 var odit = ZOOS();
                 //allRecords.AddRange(odit);
 
-                Print(odit);
+                PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Информационно обслужване"))
             {
                 var odit = ITService();
                 //allRecords.AddRange(odit);
 
-                Print(odit);
+                PrintT(odit);
             }
             else if (comboBox1.Text.Contains("АСД, деловодство и архив"))
             {
@@ -211,7 +211,6 @@ namespace Data
             else
             {
                 var all = BossData(textBox1.Text.ToString());
-
                 foreach (var b in all)
                 {
                     this.richTextBox1.Text += b + "\n";
@@ -505,32 +504,110 @@ namespace Data
             return infoData;
         }
 
-        private List<string> ZOOS()
+        private List<Employee> ZOOS()
         {
-            var infoData = new List<string>
-            {
-                "Старши експерт	д-р Едибе Реджаиева Ахмедова	505	e.ahmedova@razgrad.bg	618/217",
-                "Главен специалист	Светлозара Венелинова Захариева 	505А	 s.zaharieva@razgrad.bg	618/23"
-            };
-            //allRecords.AddRange(infoData);
+            Employee emp = new Employee();
+            emp.Department = "Звено за обслужване на Общински съвет";
+            emp.professionalLeve = "Старши експерт";
+            emp.FirstName = "д-р Едибе";
+            emp.MiddleName = "Реджаиева";
+            emp.LastName = "Ахмедова";
+            emp.roomNumber = "505";
+            emp.email = "e.ahmedova@razgrad.bg";
+            emp.phoneNumber = "618/217";
 
-            return infoData;
+            Employee emp1 = new Employee();
+            emp1.Department = "Звено за обслужване на Общински съвет";
+            emp1.professionalLeve = "Главен специалист";
+            emp1.FirstName = "Светлозара";
+            emp1.MiddleName = "Венелинова";
+            emp1.LastName = "Захариева";
+            emp1.roomNumber = "505А";
+            emp1.email = "s.zaharieva@razgrad.bg";
+            emp1.phoneNumber = "618/237";
+
+
+
+            List<Employee> empCollection = new List<Employee>();
+            empCollection.Add(emp);
+            empCollection.Add(emp1);
+
+            return empCollection;
         }
 
-        private List<string> ITService()
+        private List<Employee> ITService()
         {
-            var infoData = new List<string>
+            Employee emp1 = new Employee();
+            emp1.Department = "Информационно обслужване";
+            emp1.professionalLeve = "Главен експерт";
+            emp1.FirstName = "инж. Адриан";
+            emp1.MiddleName = "Димитров";
+            emp1.LastName = "Атанасов";
+            emp1.roomNumber = "113";
+            emp1.email = "it@razgrad.bg";
+            emp1.phoneNumber = "618/273";
+
+            Employee emp2 = new Employee();
+            emp2.Department = "Информационно обслужване";
+            emp2.professionalLeve = "Главен експерт";
+            emp2.FirstName = "Галя";
+            emp2.MiddleName = "Кръстева";
+            emp2.LastName = "Кръстева";
+            emp2.roomNumber = "113";
+            emp2.email = "it@razgrad.bg / it_mdt@razgrad.bg";
+            emp2.phoneNumber = "618/272";
+
+            Employee emp3 = new Employee();
+            emp3.Department = "Информационно обслужване";
+            emp3.professionalLeve = "младши експерт";
+            emp3.FirstName = "Десислава";
+            emp3.MiddleName = "Стилиянова";
+            emp3.LastName = "Тоцева";
+            emp3.roomNumber = "Фронт-офис №1";
+            emp3.email = "fo@razgrad.bg";
+            emp3.phoneNumber = "618/304";
+
+            Employee emp4 = new Employee();
+            emp4.Department = "Информационно обслужване";
+            emp4.professionalLeve = "Старши специалист";
+            emp4.FirstName = "Валентина";
+            emp4.MiddleName = "Иванова";
+            emp4.LastName = "Илиева";
+            emp4.roomNumber = "Фронт-офис №1";
+            emp4.email = "";
+            emp4.phoneNumber = "618/305";
+
+            Employee emp5 = new Employee();
+            emp5.Department = "Информационно обслужване";
+            emp5.professionalLeve = "Старши специалист";
+            emp5.FirstName = "Красимира";
+            emp5.MiddleName = "Костадинова";
+            emp5.LastName = "Неделчева";
+            emp5.roomNumber = "Фронт-офис №1";
+            emp5.email = "";
+            emp5.phoneNumber = "618/303";
+
+            //var infoData = new List<string>
+            //{
+            //    "Главен експерт	 Адриан Димитров Атанасов	113	it@razgrad.bg	618/273",
+            //    "Главен експерт	Галя Кръстева Кръстева	113	it_mdt@razgrad.bg	618/272	it@razgrad.bg	",
+            //    "Младши експерт	Десислава Стилиянова Тоцева	Фронт-офис №1	fo@razgrad.bg	618/304",
+            //    "Младши експерт		Фронт-офис №1		618/306",
+            //    "Старши специалист	Валентина Иванова Илиева 	Фронт-офис №1		618/305",
+            //    "Старши специалист	Зелиха Юкселова Сали	Фронт-офис №1		618/303	Замества се от Красимира Костадинова Неделчева"
+            //};
+            List<Employee> empCollection = new List<Employee>
             {
-                "Главен експерт	 Адриан Димитров Атанасов	113	it@razgrad.bg	618/273",
-                "Главен експерт	Галя Кръстева Кръстева	113	it_mdt@razgrad.bg	618/272	it@razgrad.bg	",
-                "Младши експерт	Десислава Стилиянова Тоцева	Фронт-офис №1	fo@razgrad.bg	618/304",
-                "Младши експерт		Фронт-офис №1		618/306",
-                "Старши специалист	Валентина Иванова Илиева 	Фронт-офис №1		618/305",
-                "Старши специалист	Зелиха Юкселова Сали	Фронт-офис №1		618/303	Замества се от Красимира Костадинова Неделчева"
+                emp1,
+                emp2,
+                emp3,
+                emp4,
+                emp5
             };
+
             //allRecords.AddRange(infoData);
 
-            return infoData;
+            return empCollection;
         }
         private List<string> ASD()
         {
@@ -630,12 +707,15 @@ namespace Data
      
 
             this.richTextBox1.Text += "ОТДЕЛ/ДИРЕКЦИЯ" + " => "  +"ПРОФЕСИОНАЛНО НИВО"+" || "+ " ИМЕНА НА СЛУЖИТЕЛЯ "  + " || "+"СТАЯ/КАБИНЕТ"+" ИМЕЙЛ "+"ТЕЛЕФОНЕН НОМЕР"+ $"\n{new string('*', 130)}\n";
-
+            var count = 0;
             foreach (var employee in collection)
             {
-                this.richTextBox1.Text += employee.Department + " => " +employee.professionalLeve+" || "+ employee.FirstName + " "+employee.MiddleName+" " + employee.LastName+" || "
+                this.richTextBox1.Text += count+". "+ employee.Department + " => " +employee.professionalLeve+" || "+ employee.FirstName + " "+employee.MiddleName+" " + employee.LastName+" || "
                                           +employee.roomNumber+" || "+employee.email+" || "+employee.phoneNumber + $"\n{new string('*', 130)}\n";
+                count++;
+
             }
+
         }
 
         public void Print(List<string> temp)
@@ -750,7 +830,8 @@ namespace Data
                     var removeEmpty = allRec[i];//allRecord[i].Split(new char[]{' ', '\t'});
                     var temp = "";
                     StringBuilder sb = new StringBuilder();
-                    sb.Append(removeEmpty);
+                    sb.Append(counter);
+                    sb.Append(" "+removeEmpty);
                     //foreach (var s in removeEmpty)
                     //{
                     //    sb.Append(s+" ");
