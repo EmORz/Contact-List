@@ -46,6 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Engine.cs" />
+    <Compile Include="Departments\Architect.cs" />
+    <Compile Include="Departments\ASD.cs" />
+    <Compile Include="Departments\Chief.cs" />
+    <Compile Include="Departments\Culture.cs" />
+    <Compile Include="Departments\FDMDT.cs" />
+    <Compile Include="Departments\GRAON.cs" />
+    <Compile Include="Departments\HumanitieActivity.cs" />
+    <Compile Include="Departments\Investion.cs" />
+    <Compile Include="Departments\Kmetstva.cs" />
+    <Compile Include="Departments\Narko.cs" />
+    <Compile Include="Departments\PIAR.cs" />
+    <Compile Include="Departments\PNO.cs" />
+    <Compile Include="Departments\ProgramAndEkologie.cs" />
+    <Compile Include="Departments\TSU.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -53,9 +68,14 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Others.cs" />
+    <Compile Include="Departments\Helper.cs" />
+    <Compile Include="Departments\ITService.cs" />
+    <Compile Include="Departments\Odit.cs" />
+    <Compile Include="Departments\Others.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Departments\SocialActivity.cs" />
+    <Compile Include="Departments\ZOOS.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Data.Core;
+using Data.Departments;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Data;
 
 namespace Data
 {
@@ -15,14 +16,12 @@ namespace Data
         }
         public List<string> allRecords = new List<string>();
         public List<string> allRecord = new List<string>();
-        public List<Employee> allRec = new List<Employee>();
-        
+
+        Engine engine = new Engine();
+
         public void RunFile()
         {
-            var chief = Chief();
-            var zveno = Odit();
-            var arhitect = Architect();
-            var lawers = PNO();
+            
             var cultutre = Cultur();
             var piar = PIAR();
             var mdt = FDMDT();
@@ -30,20 +29,11 @@ namespace Data
             var invest = Investicion();
             var tsu = TSU();
             var dhd = HumanActivity();
-            var social = SocialActivity();
             var narko = Narko();
-            var zoos = ZOOS();
             var graon = GRAON();
-            var it = ITService();
             var asd = ASD();
             var kmetstva = LocalMunicipality();
-           // var others = Oth();
-            var others = Others.Oth();
 
-            allRec.AddRange(chief);
-            allRec.AddRange(arhitect);
-            allRec.AddRange(zveno);
-            allRec.AddRange(lawers);
             allRecord.AddRange(cultutre);
             allRecord.AddRange(piar);
             allRecord.AddRange(mdt);
@@ -51,46 +41,34 @@ namespace Data
             allRecord.AddRange(invest);
             allRecord.AddRange(tsu);
             allRecord.AddRange(dhd);
-            allRec.AddRange(social);
             allRecord.AddRange(narko);
-            allRec.AddRange(zoos);
             allRecord.AddRange(graon);
-            allRec.AddRange(it);
             allRecord.AddRange(asd);
             allRecord.AddRange(kmetstva);
-            allRec.AddRange(others);
-
-
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            engine.RunFile();
             RunFile();
             if (comboBox1.Text.Contains("Ръководство"))
             {
-                var chief = Chief();
-                //allRecords.AddRange(chief);
-              
+                var chief = Chief.ChiefEmp();
                 PrintT(chief);
-
             }
 
             else if (comboBox1.Text.Contains("Звено за вътрешен одит"))
             {
-                var odit = Odit();
-            
-
-                // allRecords.AddRange(odit);
-
+                var odit = Data.Odit.OditEmp();
                 PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Главен архитект"))
             {
-                var odit = Architect();
+                var odit = Data.Architect.ArchitectEmp();
                 PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Дирекция \"Правно нормативно обслужване\""))
             {
-                var odit = PNO();
+                var odit = Data.PNO.PNOEmp();
                 PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Дирекция \"Култура спорт и туризъм\""))
@@ -144,9 +122,7 @@ namespace Data
             }
             else if (comboBox1.Text.Contains("Отдел \"Социални дейности\""))
             {
-                var odit = SocialActivity();
-                //allRecords.AddRange(odit);
-
+                var odit = Data.SocialActivity.SocialActivityEmp();
                 PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Общински съвет по наркотични вещества"))
@@ -165,16 +141,12 @@ namespace Data
             }
             else if (comboBox1.Text.Contains("Звено „Обслужване на Общински съвет”"))
             {
-                var odit = ZOOS();
-                //allRecords.AddRange(odit);
-
+                var odit = Data.ZOOS.ZOOSEmp();
                 PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Информационно обслужване"))
             {
-                var odit = ITService();
-                //allRecords.AddRange(odit);
-
+                var odit = Data.ITService.ITServiceEmp();
                 PrintT(odit);
             }
             else if (comboBox1.Text.Contains("АСД, деловодство и архив"))
@@ -209,143 +181,8 @@ namespace Data
                 
                 allRecord.Clear();
             }
-         
-            
         }
-
-        private List<Employee> Odit()
-        {
-            Employee emp = new Employee();
-            emp.Department = "Звено за вътрешен одит";
-            emp.professionalLeve = "Главен вътрешен одитор";
-            emp.FirstName = "Даринка";
-            emp.MiddleName = "Неделчева";
-            emp.LastName = "Илиева";
-            emp.roomNumber = "906";
-            emp.email = "darina.ilieva@razgrad.bg";
-            emp.phoneNumber = "618/182";
-
         
-
-            List<Employee> empCollection = new List<Employee>();
-            empCollection.Add(emp);
-       
-            //allRecords.AddRange(infoData);
-            return empCollection;
-        }
-        private List<Employee> Architect()
-        {
-            Employee emp = new Employee();
-            emp.Department = "Главен архитект";
-            emp.professionalLeve = "";
-            emp.FirstName = "Илин";
-            emp.MiddleName = "Любомиров";
-            emp.LastName = "Солаков";
-            emp.roomNumber = "210";
-            emp.email = "solakov@razgrad.bg";
-            emp.phoneNumber = "618/149";
-
-            //var infoData = new List<string>
-            //{
-            //    "Главен архитект	 арх. Илин Любомиров Солаков	210	solakov@razgrad.bg	618/149"
-            //};
-            List<Employee> empCollection = new List<Employee>();
-            empCollection.Add(emp);
-
-            //allRecords.AddRange(infoData);
-            return empCollection;
-        }
-        private List<Employee> PNO()
-        {
-            
-            Employee emp = new Employee();
-            emp.Department = "Правно нормативно обслужване";
-            emp.professionalLeve = "Директор дирекция";
-            emp.FirstName = "Хубан";
-            emp.MiddleName = "Евгениев";
-            emp.LastName = "Соколов";
-            emp.roomNumber = "301";
-            emp.email = "h.sokolov@razgrad.bg";
-            emp.phoneNumber = "618/175";
-
-            Employee emp1 = new Employee();
-            emp1.Department = "Правно нормативно обслужване";
-            emp1.professionalLeve = "Главен юрисконсулт - обществени поръчки";
-            emp1.FirstName = "Билял";
-            emp1.MiddleName = "Ибрахимов";
-            emp1.LastName = "Црънгалов";
-            emp1.roomNumber = "303";
-            emp1.email = "b.trangalov@razgrad.bg";
-            emp1.phoneNumber = "618/121";
-
-            Employee emp2 = new Employee();
-            emp2.Department = "Правно нормативно обслужване";
-            emp2.professionalLeve = "Главен юрисконсулт - обществени поръчки";
-            emp2.FirstName = "Виргиния";
-            emp2.MiddleName = "Николаева";
-            emp2.LastName = "Станкова";
-            emp2.roomNumber = "303";
-            emp2.email = "v.stankova@razgrad.bg";
-            emp2.phoneNumber = "618/173";
-
-            Employee emp3 = new Employee();
-            emp3.Department = "Правно нормативно обслужване";
-            emp3.professionalLeve = "Главен юрисконсулт - обществени поръчки";
-            emp3.FirstName = "Веселка";
-            emp3.MiddleName = "Младенова";
-            emp3.LastName = "Дакова";
-            emp3.roomNumber = "304";
-            emp3.email = "v.dakova@razgrad.bg";
-            emp3.phoneNumber = "618/171";
-
-            Employee emp4 = new Employee();
-            emp4.Department = "Правно нормативно обслужване";
-            emp4.professionalLeve = "юрисконсулт";
-            emp4.FirstName = "Мирослава";
-            emp4.MiddleName = "Владимирова";
-            emp4.LastName = "Михайлова";
-            emp4.roomNumber = "304";
-            emp4.email = "m.mihaylova@razgrad.bg";
-            emp4.phoneNumber = "618/171";
-
-            Employee emp5 = new Employee();
-            emp5.Department = "Правно нормативно обслужване";
-            emp5.professionalLeve = "юрисконсулт";
-            emp5.FirstName = "Кристина";
-            emp5.MiddleName = "Ивелинова";
-            emp5.LastName = "Колева";
-            emp5.roomNumber = "304";
-            emp5.email = "k.koleva@razgrad.bg";
-            emp5.phoneNumber = "618/171";
-
-
-            Employee emp6 = new Employee();
-            emp6.Department = "Правно нормативно обслужване";
-            emp6.professionalLeve = "Главен юрисконсулт";
-            emp6.FirstName = "Сабри";
-            emp6.MiddleName = "Велиев";
-            emp6.LastName = "Дурльов";
-            emp6.roomNumber = "310";
-            emp6.email = "";
-            emp6.phoneNumber = "618/138";
-            List<Employee> employees = new List<Employee>
-            {
-                emp, emp2, emp3, emp4, emp5, emp6
-            };
-            //var infoData = new List<string>
-            //{
-            //    "Директор дирекция	Хубан Евгениев Соколов	301	h.sokolov@razgrad.bg	618/175",
-            //    "Главен юрисконсулт	Сабри Велиев Дурльов	310		618/138",
-            //    "Главен юрисконсулт - обществени поръчки	Билял Ибрахимов Црънгалов	303	b.trangalov@razgrad.bg	618/121",
-            //    "Главен юрисконсулт - обществени поръчки	Виргиния Николаева Станкова	303	v.stankova@razgrad.bg	618/173",
-            //    "Главен юрисконсулт - обществени поръчки	Веселка Младенова Дакова 	304	v.dakova@razgrad.bg	618/171",
-            //    "Юрисконсулт - обществени поръчки	Мирослава Владимирова Михайлова	304	m.mihaylova@razgrad.bg	618/171",
-            //    "Юрисконсулт - обществени поръчки	Кристина Ивелинова Колева	304	k.koleva@razgrad.bg	618/171"
-            //};
-           // allRecords.AddRange(infoData);
-
-            return employees;
-        }
         private List<string> Cultur()
         {
             var infoData = new List<string>
@@ -431,7 +268,6 @@ namespace Data
                 "Младши експерт - екология	Айля Юмерова Кърджалиева	103		618/186",
                 "Старши специалист	Татяна Димитрова Трифонова	103		618/186"
             };
-            //allRecords.AddRange(infoData);
 
             return infoData;
         }
@@ -498,7 +334,6 @@ namespace Data
                "Старши специалист	Кремена Стоянова Йорданова	гр.Разград, бул.България 21		661/366",
                "Главен специалист - поддръжка	Валери Ангелов Вълчев	гр.Разград, бул.България 21		661/366",
             };
-            //allRecords.AddRange(infoData);
 
             return infoData;
         }
@@ -525,65 +360,7 @@ namespace Data
             return infoData;
         }
 
-        private List<Employee> SocialActivity()
-        {
-            Employee emp = new Employee();
-            emp.Department = "Отдел Социални дейности";
-            emp.professionalLeve = "Началник отдел";
-            emp.FirstName = "Росица";
-            emp.MiddleName = "Бончева";
-            emp.LastName = "Георгиева";
-            emp.roomNumber = "512";
-            emp.email = "r_boncheva@razgrad.bg";
-            emp.phoneNumber = "618/312";
-
-            Employee emp1 = new Employee();
-            emp1.Department = "Отдел Социални дейности";
-            emp1.professionalLeve = "Старши експерт";
-            emp1.FirstName = "Кольо";
-            emp1.MiddleName = "Недков";
-            emp1.LastName = "Колев";
-            emp1.roomNumber = "506";
-            emp1.email = "k.kolev@razgrad.bg";
-            emp1.phoneNumber = "618/218";
-
-            Employee emp2 = new Employee();
-            emp2.Department = "Отдел Социални дейности";
-            emp2.professionalLeve = "Младши експерт";
-            emp2.FirstName = "Галина/Кадер";
-            emp2.MiddleName = "Иванова/Бейха";
-            emp2.LastName = "Маркова/Мустафа";
-            emp2.roomNumber = "506";
-            emp2.email = "sdd_eksperts@razgrad.bg";
-            emp2.phoneNumber = "618/218";
-
-            Employee emp3 = new Employee();
-            emp3.Department = "Отдел Социални дейности";
-            emp3.professionalLeve = "Старши специалист - секретар Хасанов";
-            emp3.FirstName = "Маринка";
-            emp3.MiddleName = "Дачева";
-            emp3.LastName = "Николова";
-            emp3.roomNumber = "508";
-            emp3.email = "";
-            emp3.phoneNumber = "618/135";
-
-            List<Employee> empCollection = new List<Employee>();
-            empCollection.Add(emp);
-            empCollection.Add(emp1);
-            empCollection.Add(emp2);
-            empCollection.Add(emp3);
-            //var infoData = new List<string>
-            //{
-            //    "Началник отдел	Росица Бончева Георгиева	512	r_boncheva@razgrad.bg	618/312",
-            //    "Старши експерт	Кольо Недков Колев	506	k.kolev@razgrad.bg	618/218",
-            //    "Младши експерт	Галина Иванова Маркова	506	sdd_eksperts@razgrad.bg	618/218	Замества се от Кадер Бейхан Мустафова",
-            //    "Старши специалист - социални дейности	Маринка Дачева Николова	508		618/135"
-            //};
-            //allRecords.AddRange(infoData);
-
-            return empCollection;
-        }
-
+       
 
         private List<string> Narko()
         {
@@ -615,108 +392,7 @@ namespace Data
 
             return infoData;
         }
-
-        private List<Employee> ZOOS()
-        {
-            Employee emp = new Employee();
-            emp.Department = "Звено за обслужване на Общински съвет";
-            emp.professionalLeve = "Старши експерт";
-            emp.FirstName = "д-р Едибе";
-            emp.MiddleName = "Реджаиева";
-            emp.LastName = "Ахмедова";
-            emp.roomNumber = "505";
-            emp.email = "e.ahmedova@razgrad.bg";
-            emp.phoneNumber = "618/217";
-
-            Employee emp1 = new Employee();
-            emp1.Department = "Звено за обслужване на Общински съвет";
-            emp1.professionalLeve = "Главен специалист";
-            emp1.FirstName = "Светлозара";
-            emp1.MiddleName = "Венелинова";
-            emp1.LastName = "Захариева";
-            emp1.roomNumber = "505А";
-            emp1.email = "s.zaharieva@razgrad.bg";
-            emp1.phoneNumber = "618/237";
-
-
-
-            List<Employee> empCollection = new List<Employee>();
-            empCollection.Add(emp);
-            empCollection.Add(emp1);
-
-            return empCollection;
-        }
-
-        private List<Employee> ITService()
-        {
-            Employee emp1 = new Employee();
-            emp1.Department = "Информационно обслужване";
-            emp1.professionalLeve = "Главен експерт";
-            emp1.FirstName = "инж. Адриан";
-            emp1.MiddleName = "Димитров";
-            emp1.LastName = "Атанасов";
-            emp1.roomNumber = "113";
-            emp1.email = "it@razgrad.bg";
-            emp1.phoneNumber = "618/273";
-
-            Employee emp2 = new Employee();
-            emp2.Department = "Информационно обслужване";
-            emp2.professionalLeve = "Главен експерт";
-            emp2.FirstName = "Галя";
-            emp2.MiddleName = "Кръстева";
-            emp2.LastName = "Кръстева";
-            emp2.roomNumber = "113";
-            emp2.email = "it@razgrad.bg / it_mdt@razgrad.bg";
-            emp2.phoneNumber = "618/272";
-
-            Employee emp3 = new Employee();
-            emp3.Department = "Информационно обслужване";
-            emp3.professionalLeve = "младши експерт";
-            emp3.FirstName = "Десислава";
-            emp3.MiddleName = "Стилиянова";
-            emp3.LastName = "Тоцева";
-            emp3.roomNumber = "Фронт-офис №1";
-            emp3.email = "fo@razgrad.bg";
-            emp3.phoneNumber = "618/304";
-
-            Employee emp4 = new Employee();
-            emp4.Department = "Информационно обслужване";
-            emp4.professionalLeve = "Старши специалист";
-            emp4.FirstName = "Валентина";
-            emp4.MiddleName = "Иванова";
-            emp4.LastName = "Илиева";
-            emp4.roomNumber = "Фронт-офис №1";
-            emp4.email = "";
-            emp4.phoneNumber = "618/305";
-
-            Employee emp5 = new Employee();
-            emp5.Department = "Информационно обслужване";
-            emp5.professionalLeve = "Старши специалист";
-            emp5.FirstName = "Красимира";
-            emp5.MiddleName = "Костадинова";
-            emp5.LastName = "Неделчева";
-            emp5.roomNumber = "Фронт-офис №1";
-            emp5.email = "";
-            emp5.phoneNumber = "618/303";
-
-            //var infoData = new List<string>
-            //{
-            //    "Главен експерт	 Адриан Димитров Атанасов	113	it@razgrad.bg	618/273",
-            //    "Главен експерт	Галя Кръстева Кръстева	113	it_mdt@razgrad.bg	618/272	it@razgrad.bg	",
-            //    "Младши експерт	Десислава Стилиянова Тоцева	Фронт-офис №1	fo@razgrad.bg	618/304",
-            //    "Младши експерт		Фронт-офис №1		618/306",
-            //    "Старши специалист	Валентина Иванова Илиева 	Фронт-офис №1		618/305",
-            //    "Старши специалист	Зелиха Юкселова Сали	Фронт-офис №1		618/303	Замества се от Красимира Костадинова Неделчева"
-            //};
-            List<Employee> empCollection = new List<Employee>
-            {
-                emp1,emp2,emp3,emp4,emp5
-            };
-
-            //allRecords.AddRange(infoData);
-
-            return empCollection;
-        }
+        
         private List<string> ASD()
         {
             var infoData = new List<string>
@@ -729,7 +405,6 @@ namespace Data
                 "Технически изпълнител	Петя Цонева Петрова	7		618/282",
                 "Хигиенисти		1013		618/274"
             };
-            //allRecords.AddRange(infoData);
 
             return infoData;
         }
@@ -784,29 +459,7 @@ namespace Data
 
             return infoData;
         }
-        private List<string> Oth()
-        {
-            var infoData = new List<string>
-            {
-                "Мл.експерт „Етнически и интеграционни въпроси	 Емануил Александров Николов	602	eiv@razgrad.bg	618/180",
-                "Функция Отбрана и сигурност			",
-                "Главен експерт ОМП и сигурност на информацията		305	omp@razgrad.bg	618/252",
-                "Младши експерт ОМП		305	omp@razgrad.bg	618/252",
-                "Старши специалист	Данчо Владимиров Димитров	305		618/252",
-                "Организация, контрол и изпълнение дейностите по поддържане чистотата в обществените територии				",
-                "Ръководител звено	Николай Добромиров Николаев	114a	  	618/271",
-                "Младши експерт	Рефие Гюрсел Хюсню	114a	r.hyusnyu@razgrad.bg	618/271",
-                "Хижа м. „Пчелина”				",
-                "Управител	 Ваня Стефанова Коцева			662/736",
-                "Специалист поддръжка	 Матьо Иванов Коцев			662/736",
-                "Дежурни				",
-                "Денонощна охрана		1		618/132",
-                "Пропуск		4		618/151",
-                "Кафе „Панорама” Сграда на Общинска администрация, 11 ет. 618/287"
-            };
-
-            return infoData;
-        }
+        
 
         public void PrintT(List<Employee> collection)
         {
@@ -834,92 +487,11 @@ namespace Data
             allRecord.Clear();
         }
 
-        public List<Employee> Chief()
-        {
-            Employee emp1 = new Employee();
-            emp1.Department = "Кмет";
-            emp1.professionalLeve = "д-р";
-            emp1.FirstName = "Валентин";
-            emp1.MiddleName = "Стефанов";
-            emp1.LastName = "Василев";
-            emp1.roomNumber = "307";
-            emp1.email = "kmet@razgrad.bg";
-            emp1.phoneNumber = "660/091;618/100";
-
-            Employee emp2 = new Employee();
-            emp2.Department = "сътрудник-кмет";
-            emp2.professionalLeve = "главен";
-            emp2.FirstName = "Красимира";
-            emp2.MiddleName = "Илиева";
-            emp2.LastName = "Василева";
-            emp2.roomNumber = "307";
-            emp2.email = "";
-            emp2.phoneNumber = "618/133";
-
-            Employee emp3 = new Employee();
-            emp3.Department = "Зам.-Кмет";
-            emp3.professionalLeve = "";
-            emp3.FirstName = "Галина";
-            emp3.MiddleName = "Милкова";
-            emp3.LastName = "Георгиева-Маринова";
-            emp3.roomNumber = "409";
-            emp3.email = "	g.georgieva@razgrad.bg";
-            emp3.phoneNumber = "618/360";
-
-            Employee emp4 = new Employee();
-            emp4.Department = "сътрудник-зам.-кмет";
-            emp4.professionalLeve = "главен специалист";
-            emp4.FirstName = "Румяна";
-            emp4.MiddleName = "Ненова";
-            emp4.LastName = "Енчева";
-            emp4.roomNumber = "408";
-            emp4.email = "";
-            emp4.phoneNumber = "618/134";
-
-
-            Employee emp5 = new Employee();
-            emp5.Department = "Зам.-Кмет";
-            emp5.professionalLeve = "";
-            emp5.FirstName = "Ердинч";
-            emp5.MiddleName = "Ахмедов";
-            emp5.LastName = "Хасанов";
-            emp5.roomNumber = "508";
-            emp5.email = "e.hasanov@razgrad.bg";
-            emp5.phoneNumber = "618/350";
-
-            Employee emp6 = new Employee();
-            emp6.Department = "сътрудник-зам.-кмет";
-            emp6.professionalLeve = "главен специалист";
-            emp6.FirstName = "Маринка";
-            emp6.MiddleName = "Дачева";
-            emp6.LastName = "Николова";
-            emp6.roomNumber = "508";
-            emp6.email = "";
-            emp6.phoneNumber = "618/135";
-
-            Employee emp7 = new Employee();
-            emp7.Department = "Секретар на Общината";
-            emp7.professionalLeve = "";
-            emp7.FirstName = "Нели";
-            emp7.MiddleName = "Стоянова";
-            emp7.LastName = "Добрева";
-            emp7.roomNumber = "507";
-            emp7.email = "sdd@razgrad.bg";
-            emp7.phoneNumber = "618/146";
-
-
-            //Ръководство
-            var infoData = new List<Employee>
-            {
-                emp1,emp2,emp3,emp4,emp5,emp6,emp7
-            };
-            return infoData;
-        }
         public List<string> BossData(string input)
         {
             var result =  new List<string>();
             var result01 = new List<string>();
-
+            var allRec = engine.allRec;
 
             var counter = 0;
 
@@ -935,7 +507,6 @@ namespace Data
                 {
 
                     var removeEmpty = allRec[i];
-                    var temp = "";
                     StringBuilder sb = new StringBuilder();
                     sb.Append(counter);
                     sb.Append(" "+removeEmpty);
@@ -970,7 +541,7 @@ namespace Data
         {
             this.richTextBox1.Clear();
             this.textBox1.Clear();
-            this.allRec.Clear();
+            engine.allRec.Clear();
         }
 
         private void textBox2_TextChanged_1(object sender, EventArgs e)
