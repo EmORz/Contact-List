@@ -25,7 +25,6 @@
         {
             return Department+" => "+professionalLeve+" "+service+" "+roomNumber+" "+FirstName+" "+MiddleName+" "+LastName+" || "+email+" "+phoneNumber;
         }
-
-        //             "Главен вътрешен одитор	Даринка Неделчева Илиева	906	darina.ilieva@razgrad.bg	618/182",
+        
     }
 }
