@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Data.Departments;
+using Data.Models;
 
 namespace Data.Core
 {
@@ -11,7 +12,7 @@ namespace Data.Core
         {
             var chief = Chief.ChiefEmp();
             var zveno = Data.Odit.OditEmp();
-            var arhitect = Data.Architect.ArchitectEmp();
+            var arhitect = Architect.ArchitectEmp();
             var lawers = Data.PNO.PNOEmp();
             //var cultutre = Cultur();
             //var piar = PIAR();
@@ -24,7 +25,7 @@ namespace Data.Core
            // var narko = Narko();
             var zoos = Data.ZOOS.ZOOSEmp();
             //var graon = GRAON();
-            var it = Data.ITService.ITServiceEmp();
+            var it = ITService.ITServiceEmp();
             //var asd = ASD();
             //var kmetstva = LocalMunicipality();
             var others = Others.Oth();

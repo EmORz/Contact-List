@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Data.Models;
 
 namespace Data
 {
@@ -63,7 +64,7 @@ namespace Data
             }
             else if (comboBox1.Text.Contains("Главен архитект"))
             {
-                var odit = Data.Architect.ArchitectEmp();
+                var odit = Architect.ArchitectEmp();
                 PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Дирекция \"Правно нормативно обслужване\""))
@@ -146,7 +147,7 @@ namespace Data
             }
             else if (comboBox1.Text.Contains("Информационно обслужване"))
             {
-                var odit = Data.ITService.ITServiceEmp();
+                var odit = ITService.ITServiceEmp();
                 PrintT(odit);
             }
             else if (comboBox1.Text.Contains("АСД, деловодство и архив"))
