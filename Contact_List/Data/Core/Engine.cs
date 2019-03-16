@@ -15,7 +15,7 @@ namespace Data.Core
             var arhitect = Architect.ArchitectEmp();
             var lawers = Data.PNO.PNOEmp();
             //var cultutre = Cultur();
-            //var piar = PIAR();
+            var piar = PIAR.PiarEmp();
             //var mdt = FDMDT();
             //var programi = ProgramAndEkologiq();
             //var invest = Investicion();
@@ -24,9 +24,9 @@ namespace Data.Core
             var social = Data.SocialActivity.SocialActivityEmp();
            // var narko = Narko();
             var zoos = Data.ZOOS.ZOOSEmp();
-            //var graon = GRAON();
+            var graon = GRAON.GRAONEmp();
             var it = ITService.ITServiceEmp();
-            //var asd = ASD();
+            var asd = ASD.ASDEmp();
             //var kmetstva = LocalMunicipality();
             var others = Others.Oth();
 
@@ -35,7 +35,7 @@ namespace Data.Core
             allRec.AddRange(zveno);
             allRec.AddRange(lawers);
             //allRecord.AddRange(cultutre);
-            //allRecord.AddRange(piar);
+            allRec.AddRange(piar);
             //allRecord.AddRange(mdt);
             //allRecord.AddRange(programi);
             //allRecord.AddRange(invest);
@@ -44,9 +44,9 @@ namespace Data.Core
             allRec.AddRange(social);
             //allRecord.AddRange(narko);
             allRec.AddRange(zoos);
-           // allRecord.AddRange(graon);
+            allRec.AddRange(graon);
             allRec.AddRange(it);
-           // allRecord.AddRange(asd);
+           allRec.AddRange(asd);
            // allRecord.AddRange(kmetstva);
             allRec.AddRange(others);
         }

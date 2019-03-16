@@ -24,26 +24,23 @@ namespace Data
         {
             
             var cultutre = Cultur();
-            var piar = PIAR();
+      
             var mdt = FDMDT();
             var programi = ProgramAndEkologiq();
             var invest = Investicion();
             var tsu = TSU();
             var dhd = HumanActivity();
             var narko = Narko();
-            var graon = GRAON();
             var asd = ASD();
             var kmetstva = LocalMunicipality();
 
             allRecord.AddRange(cultutre);
-            allRecord.AddRange(piar);
             allRecord.AddRange(mdt);
             allRecord.AddRange(programi);
             allRecord.AddRange(invest);
             allRecord.AddRange(tsu);
             allRecord.AddRange(dhd);
             allRecord.AddRange(narko);
-            allRecord.AddRange(graon);
             allRecord.AddRange(asd);
             allRecord.AddRange(kmetstva);
         }
@@ -81,10 +78,10 @@ namespace Data
             }
             else if (comboBox1.Text.Contains("Връзки с обществеността, протокол и международни дейности"))
             {
-                var odit = PIAR();
+                var odit = Departments.PIAR.PiarEmp();
                 //allRecords.AddRange(odit);
 
-                Print(odit);
+                PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Дирекция \"Финансови дейности и МДТ\""))
             {
@@ -135,10 +132,10 @@ namespace Data
             }
             else if (comboBox1.Text.Contains("Отдел \"Гражданска регистрация и административно обслужване на населението\""))
             {
-                var odit = GRAON();
+                var odit = Departments.GRAON.GRAONEmp();
                // allRecords.AddRange(odit);
 
-                Print(odit);
+                PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Звено „Обслужване на Общински съвет”"))
             {
@@ -152,10 +149,10 @@ namespace Data
             }
             else if (comboBox1.Text.Contains("АСД, деловодство и архив"))
             {
-                var odit = ASD();
+                var odit = Departments.ASD.ASDEmp();
                 //allRecords.AddRange(odit);
 
-                Print(odit);
+                PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Кметства"))
             {
@@ -378,21 +375,21 @@ namespace Data
 
             return infoData;
         }
-        private List<string> GRAON()
-        {
-            var infoData = new List<string>
-            {
-                "Началник отдел	Марияна Великова Димитрова	5	graon3@razgrad.bg	618/174",
-                "Главен експерт	Сюзан Хъкметова Хасанова	Фронт-офис №5	graon7@razgrad.bg	618/172",
-                "Старши експерт	Елка Кръстева Тодорова	Фронт-офис №5	graon4@razgrad.bg	618/167",
-                "Старши експерт	Радостин Станчев Мицов	Фронт-офис №5	radostin.mitsov@razgrad.bg	618/167",
-                "Старши специалист	Наташа Лалева Веселинова	Фронт-офис №5	graon5@razgrad.bg	618/168",
-                "Старши специалист	Недялка Илиева Андреева	Фронт-офис №5	graon6@razgrad.bg	618/168"
-            };
-            //allRecords.AddRange(infoData);
+        //private List<string> GRAON()
+        //{
+        //    var infoData = new List<string>
+        //    {
+        //        "Началник отдел	Марияна Великова Димитрова	5	graon3@razgrad.bg	618/174",
+        //        "Главен експерт	Сюзан Хъкметова Хасанова	Фронт-офис №5	graon7@razgrad.bg	618/172",
+        //        "Старши експерт	Елка Кръстева Тодорова	Фронт-офис №5	graon4@razgrad.bg	618/167",
+        //        "Старши експерт	Радостин Станчев Мицов	Фронт-офис №5	radostin.mitsov@razgrad.bg	618/167",
+        //        "Старши специалист	Наташа Лалева Веселинова	Фронт-офис №5	graon5@razgrad.bg	618/168",
+        //        "Старши специалист	Недялка Илиева Андреева	Фронт-офис №5	graon6@razgrad.bg	618/168"
+        //    };
+        //    //allRecords.AddRange(infoData);
 
-            return infoData;
-        }
+        //    return infoData;
+        //}
         
         private List<string> ASD()
         {
