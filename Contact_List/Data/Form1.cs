@@ -136,7 +136,7 @@ namespace Data
             }
             else
             {
-                var all = BossData(textBox1.Text.ToString());
+                var all = BossData(textBox1.Text);
                 foreach (var b in all)
                 {
                     this.richTextBox1.Text += b + "\n";
@@ -341,6 +341,7 @@ namespace Data
             var allRec = engine.allRec;
 
             var counter = 0;
+            StringBuilder sb = new StringBuilder();
 
             for (int i = 0; i < allRec.Count; i++)
             {
@@ -355,14 +356,21 @@ namespace Data
                 {
 
                     var removeEmpty = allRec[i];
-                    StringBuilder sb = new StringBuilder();
                     sb.Append(counter);
                     sb.Append(" "+removeEmpty);
                     sb.AppendLine($"\n{new string('*', 130)}"+"\n");
                     counter++;
-                    result.Add(sb.ToString());
                 }
             }
+
+            foreach (var records in allRecord)
+            {
+                if (records.Contains(input))
+                {
+                    sb.AppendLine(records);
+                }
+            }
+            result.Add(sb.ToString());
             allRecord.Clear();
             foreach (var s in result.Distinct()) ;
             var tempo = result.Distinct().ToList();
