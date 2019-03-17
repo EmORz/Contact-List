@@ -22,26 +22,14 @@ namespace Data
 
         public void RunFile()
         {
-            
-            var cultutre = Cultur();
-      
             var mdt = FDMDT();
             var programi = ProgramAndEkologiq();
-            var invest = Investicion();
             var tsu = TSU();
-            var dhd = HumanActivity();
-            var narko = Narko();
-            var asd = ASD();
             var kmetstva = LocalMunicipality();
-
-            allRecord.AddRange(cultutre);
+            
             allRecord.AddRange(mdt);
             allRecord.AddRange(programi);
-            allRecord.AddRange(invest);
             allRecord.AddRange(tsu);
-            allRecord.AddRange(dhd);
-            allRecord.AddRange(narko);
-            allRecord.AddRange(asd);
             allRecord.AddRange(kmetstva);
         }
         private void button1_Click(object sender, EventArgs e)
@@ -71,52 +59,38 @@ namespace Data
             }
             else if (comboBox1.Text.Contains("Дирекция \"Култура спорт и туризъм\""))
             {
-                var odit = Cultur();
-                //allRecords.AddRange(odit);
-
-                Print(odit); 
+                var odit = Culture.CultureEmp();
+                PrintT(odit); 
             }
             else if (comboBox1.Text.Contains("Връзки с обществеността, протокол и международни дейности"))
             {
                 var odit = Departments.PIAR.PiarEmp();
-                //allRecords.AddRange(odit);
-
                 PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Дирекция \"Финансови дейности и МДТ\""))
             {
                 var odit = FDMDT();
-                //allRecords.AddRange(odit);
-
                 Print(odit);
             }
             else if (comboBox1.Text.Contains("Дирекция \"Програми и околна среда\""))
             {
                 var odit = ProgramAndEkologiq();
-               // allRecords.AddRange(odit);
-
                 Print(odit);
             }
             else if (comboBox1.Text.Contains("Отдел \"Инвестиционни дейности\""))
             {
-                var odit = Investicion();
-                //allRecords.AddRange(odit);
-
-                Print(odit);
+                var odit = Investion.InvestionEmp();
+                PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Дирекция \"ТСУ, общинска собственост и контрол в строителството\""))
             {
                 var odit = TSU();
-               // allRecords.AddRange(odit);
-
                 Print(odit);
             }
             else if (comboBox1.Text.Contains("Дирекция \"Хуманитарни дейности\""))
             {
-                var odit = HumanActivity();
-                //allRecords.AddRange(odit);
-
-                Print(odit);
+                var odit = HumanitieActivity.HumanitieEmp();
+                PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Отдел \"Социални дейности\""))
             {
@@ -125,16 +99,12 @@ namespace Data
             }
             else if (comboBox1.Text.Contains("Общински съвет по наркотични вещества"))
             {
-                var odit = Narko();
-               // allRecords.AddRange(odit);
-
-                Print(odit);
+                var odit = Narko.NarkoEmp();
+                PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Отдел \"Гражданска регистрация и административно обслужване на населението\""))
             {
                 var odit = Departments.GRAON.GRAONEmp();
-               // allRecords.AddRange(odit);
-
                 PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Звено „Обслужване на Общински съвет”"))
@@ -150,15 +120,12 @@ namespace Data
             else if (comboBox1.Text.Contains("АСД, деловодство и архив"))
             {
                 var odit = Departments.ASD.ASDEmp();
-                //allRecords.AddRange(odit);
 
                 PrintT(odit);
             }
             else if (comboBox1.Text.Contains("Кметства"))
             {
                 var odit = LocalMunicipality();
-                //allRecords.AddRange(odit);
-
                 Print(odit);
             }
 
@@ -169,46 +136,16 @@ namespace Data
             }
             else
             {
-                var all = BossData(textBox1.Text.ToString()).Distinct();
+                var all = BossData(textBox1.Text.ToString());
                 foreach (var b in all)
                 {
                     this.richTextBox1.Text += b + "\n";
                 }
-
                 all.ToList().Clear();
-                
                 allRecord.Clear();
             }
         }
-        
-        private List<string> Cultur()
-        {
-            var infoData = new List<string>
-            {
-                "Гл. експерт Спорт	Валери Бойчев Деков	503	boichev@razgrad.bg	618/243",
-                "Гл. експерт	Камен Тодоров Кулев	503	kultura@razgrad.bg	618/243",
-                "Гл. експерт „Култура” 	Виолета Антонова Атанасова	501	kultura@razgrad.bg	618/241",
-                "Младши експерт	Росица Рашкова Раденкова	503	kultura@razgrad.bg	618/243",
-                "Младши експерт	Виктория Недкова Иванова	512	kultura@razgrad.bg	618/214"
-            };
-            //allRecords.AddRange(infoData);
-
-            return infoData;
-        }
-
-        private List<string> PIAR()
-        {
-            var infoData = new List<string>
-            {
-                "Старши експерт	Магдалина Йорданова Банкова	309	pr@razgrad.bg	660/230 618/300",
-                "Главен специалист	Деница Веселинова Дилова-Маркова	310а		618/289",
-                "Главен специалист-сътрудник 	Красимира Илиева Василева	307	kmet@razgrad.bg	660/092 618/133",
-                "Главен специалист ръководител гараж	Галимир Димитров Минчев			618/124"
-            };
-            //allRecords.AddRange(infoData);
-
-            return infoData;
-        }
+   
         private List<string> FDMDT()
         {
             var infoData = new List<string>
@@ -246,8 +183,6 @@ namespace Data
                 "Главен специалист 	Галина Трифонова Неделчева	402	galina.nedelcheva@razgrad.bg	618/286",
                 "Главен експерт Човешки ресурси	Галина Тодорова Великова 	402	g.velikova@razgrad.bg  	618/286"
             };
-            //allRecords.AddRange(infoData);
-
             return infoData;
         }
         private List<string> ProgramAndEkologiq()
@@ -269,23 +204,7 @@ namespace Data
 
             return infoData;
         }
-        private List<string> Investicion()
-        {
-            var infoData = new List<string>
-            {
-                "Началник отдел	Галина Панайотова Замфирова	204	invdeinost@razgrad.bg	618/183",
-                "Главен експерт Поддръжка ЕЛ и ОВ	инж. Дончо Иванов Дончев	206	energetica@razgrad.bg	618/113",
-                "Главен експерт	инж. Камен Димитров Илиев	202а	k.iliev@razgrad.bg	618/141",
-                "Старши експерт	Иван Тодоров Иванов	206	ato@razgrad.bg	618/113",
-                "Главен специалист инвеститорски контрол	Иванка Белева Минчева	203	i.beleva@razgrad.bg	618/178",
-                "Главен специалист инвеститорски контрол	Димитринка Иванова Спасова	203	d.spasova@razgrad.bg	618/178",
-                "Главен специалист инвеститорски контрол		203	ato@razgrad.bg	618/178",
-                "Шофьор лекотоварен автомобил	 Искрен Иванов Иванов"
-            };
-            //allRecords.AddRange(infoData);
-
-            return infoData;
-        }
+ 
         private List<string> TSU()
         {
             var infoData = new List<string>
@@ -335,77 +254,7 @@ namespace Data
 
             return infoData;
         }
-        private List<string> HumanActivity()
-        {
-            var infoData = new List<string>
-            {
-                "Директор	Елка Станева Драмалиева	108	e.dramalieva@razgrad.bg	618/320",
-                "Отдел Здравеопазване				",
-                "Началник отдел	Йълдъз Хаккъ Шеремет	511	zdraveopazvane@razgrad.bg	618/311",
-                "Отдел Образование",
-                "Началник отдел	Красимира Танасова Кирчева	109 	obrazovanie@razgrad.bg	618/326",
-                "Главен експерт Средно образование	Даринка Иванова Димитрова	109	obrazovanie@razgrad.bg	618/321",
-                "Главен експерт	Айлин Решидова Маджарова-Ахмедова	109	obrazovanie@razgrad.bg	618/321",
-                "Замества се от Теодора Найденова Ненкова			",
-                "Младши експерт ”Предучилищно възпитание”		109	obrazovanie@razgrad.bg	618/325",
-                "Технолог	Мехнур Ахмед Чакал		obrazovanie@razgrad.bg	618/324",
-                "Главен счетоводител	Миглена Стефанова Дучева	109	obrazovanie@razgrad.bg	618/322",
-                "Главен специалист “Бюджет и финанси”	Галина  Неделчева Крумова	109		618/322",
-                "експерт ЧР и ТРЗ	Ралица Стоянова Дечева	109	obrazovanie@razgrad.bg	618/327"
-            };
-            //allRecords.AddRange(infoData);
 
-            return infoData;
-        }
-
-       
-
-        private List<string> Narko()
-        {
-            var infoData = new List<string>
-            {
-                "Секретар	Станислава Иванова Петрова		pic_rz@abv.bg	661/395",
-                "Превантивно-информационен център към ОбСНВ				",
-                "Главен експерт	Димитър Трифонов Димитров		pic_rz@abv.bg	661/395",
-                "Главен експерт	Гергана Георгиева Йорданова		pic_rz@abv.bg	661/395",
-                "Главен експерт	Миневер Ремзиева Мехмед		pic_rz@abv.bg	661/395",
-                "Главен експерт-ПИЦ	Йорданка Цонева Маркова		pic_rz@abv.bg	661/395"
-            };
-            //allRecords.AddRange(infoData);
-
-            return infoData;
-        }
-        //private List<string> GRAON()
-        //{
-        //    var infoData = new List<string>
-        //    {
-        //        "Началник отдел	Марияна Великова Димитрова	5	graon3@razgrad.bg	618/174",
-        //        "Главен експерт	Сюзан Хъкметова Хасанова	Фронт-офис №5	graon7@razgrad.bg	618/172",
-        //        "Старши експерт	Елка Кръстева Тодорова	Фронт-офис №5	graon4@razgrad.bg	618/167",
-        //        "Старши експерт	Радостин Станчев Мицов	Фронт-офис №5	radostin.mitsov@razgrad.bg	618/167",
-        //        "Старши специалист	Наташа Лалева Веселинова	Фронт-офис №5	graon5@razgrad.bg	618/168",
-        //        "Старши специалист	Недялка Илиева Андреева	Фронт-офис №5	graon6@razgrad.bg	618/168"
-        //    };
-        //    //allRecords.AddRange(infoData);
-
-        //    return infoData;
-        //}
-        
-        private List<string> ASD()
-        {
-            var infoData = new List<string>
-            {
-                "Старши експерт - АСД, деловодство и архив	Свилен Петков Станев	1011		618/278",
-                "Старши експерт - деловодител	Пламена Неделчева Тодорова	Фронт офис 4	obshtina@razgrad.bg	618/213 Деловодство",
-                "Старши експерт	Силвия Миленова Янева 	Фронт офис 4	obshtina@razgrad.bg	618/213	Деловодство		",
-                "Младши експерт	Хафизе Реджеб Кадриева	Фронт офис 4	obshtina@razgrad.bg	618/213	Деловодство		",
-                "Главен специалист архив	Гергина Василева Цолова	609		618/215",
-                "Технически изпълнител	Петя Цонева Петрова	7		618/282",
-                "Хигиенисти		1013		618/274"
-            };
-
-            return infoData;
-        }
         private List<string> LocalMunicipality()
         {
             var infoData = new List<string>
@@ -454,33 +303,34 @@ namespace Data
                 "Ст. специалист		Радостина Христова Великова	yasenovets@razgrad.bg	84722	313"
             };
             allRecords.AddRange(infoData);
-
             return infoData;
         }
         
 
         public void PrintT(List<Employee> collection)
         {
-     
-
-            this.richTextBox1.Text += "ОТДЕЛ/ДИРЕКЦИЯ" + " => "  +"ПРОФЕСИОНАЛНО НИВО"+" || "+ " ИМЕНА НА СЛУЖИТЕЛЯ "  + " || "+"СТАЯ/КАБИНЕТ"+" ИМЕЙЛ "+"ТЕЛЕФОНЕН НОМЕР"+ $"\n{new string('*', 130)}\n";
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("ОТДЕЛ/ДИРЕКЦИЯ" + " => " + "ПРОФЕСИОНАЛНО НИВО" + " || " + " ИМЕНА НА СЛУЖИТЕЛЯ " + " || " + "СТАЯ/КАБИНЕТ" + " ИМЕЙЛ " + "ТЕЛЕФОНЕН НОМЕР" + $"\n{new string('*', 130)}\n");
             var count = 0;
-            this.richTextBox1.Text += $"Общо записи: {collection.Count}\n";
+            sb.AppendLine($"Общо записи: {collection.Count}\n");
             foreach (var employee in collection)
             {
-                this.richTextBox1.Text += count+". "+ employee.Department + " => " +employee.professionalLeve+" || "+ employee.FirstName + " "+employee.MiddleName+" " + employee.LastName+" || "
-                                          +employee.roomNumber+" || "+employee.email+" || "+employee.phoneNumber + $"\n{new string('*', 130)}\n";
+                sb.AppendLine(count+".=> "+employee+ $"\n{new string('*', 130)}\n");
+                this.richTextBox1.Text = sb.ToString().Trim();
                 count++;
-
             }
-
         }
 
         public void Print(List<string> temp)
         {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("ОТДЕЛ/ДИРЕКЦИЯ" + " => " + "ПРОФЕСИОНАЛНО НИВО" + " || " + " ИМЕНА НА СЛУЖИТЕЛЯ " + " || " + "СТАЯ/КАБИНЕТ" + " ИМЕЙЛ " + "ТЕЛЕФОНЕН НОМЕР" + $"\n{new string('*', 130)}\n");
+            sb.AppendLine($"Общо записи: {temp.Count}\n");
+
             for (int i = 0; i < temp.Count; i++)
             {
-                this.richTextBox1.Text += i + " => " + temp[i] + $"\n{new string('*', 130)}\n";
+                sb.AppendLine(i + ".=> " + temp[i] + $"\n{new string('*', 130)}\n");
+                this.richTextBox1.Text = sb.ToString().Trim();
             }
             allRecord.Clear();
         }
@@ -488,20 +338,20 @@ namespace Data
         public List<string> BossData(string input)
         {
             var result =  new List<string>();
-            var result01 = new List<string>();
             var allRec = engine.allRec;
 
             var counter = 0;
 
             for (int i = 0; i < allRec.Count; i++)
             {
-                if (allRec[i].professionalLeve.ToLower().Contains(input.ToLower())||allRec[i].Department.ToLower().Contains(input) 
-                                                                        || allRec[i].FirstName.ToLower().Contains(input.ToLower())
-                                                                        ||allRec[i].LastName.ToLower().Contains(input.ToLower())
-                                                                        ||allRec[i].MiddleName.ToLower().Contains(input.ToLower())
-                                                                        ||allRec[i].roomNumber.ToLower().Contains(input.ToLower())
-                                                                        ||allRec[i].email.ToLower().Contains(input.ToLower())
-                                                                        ||allRec[i].phoneNumber.ToLower().Contains(input.ToLower()))
+                if (allRec[i].professionalLeve.ToLower().Contains(input.ToLower().Trim())
+                                                                        ||allRec[i].Department.ToLower().Contains(input.ToLower().Trim()) 
+                                                                        || allRec[i].FirstName.ToLower().Contains(input.ToLower().Trim())
+                                                                        ||allRec[i].LastName.ToLower().Contains(input.ToLower().Trim())
+                                                                        ||allRec[i].MiddleName.ToLower().Contains(input.ToLower().Trim())
+                                                                        ||allRec[i].roomNumber.ToLower().Contains(input.ToLower().Trim())
+                                                                        ||allRec[i].email.ToLower().Contains(input.ToLower().Trim())
+                                                                        ||allRec[i].phoneNumber.ToLower().Contains(input.ToLower().Trim()))
                 {
 
                     var removeEmpty = allRec[i];
@@ -511,8 +361,6 @@ namespace Data
                     sb.AppendLine($"\n{new string('*', 130)}"+"\n");
                     counter++;
                     result.Add(sb.ToString());
-                    result.Distinct();
-
                 }
             }
             allRecord.Clear();

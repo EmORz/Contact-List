@@ -80,6 +80,10 @@ namespace Data.Departments
             Employee emp6 = new Employee();
             emp6.Department = "АСД, деловодство и архив";
             emp6.professionalLeve = "Хигиенисти";
+            emp6.FirstName = "";
+            emp6.MiddleName = "";
+            emp6.LastName = "";
+           // emp6.service = "";
             emp6.roomNumber = "1013";
             emp6.email = "";
             emp6.phoneNumber = "618/274";
